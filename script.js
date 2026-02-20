@@ -10,7 +10,7 @@ const petalsCtx = petalsCanvas.getContext("2d");
 
 let drawing = false;
 let background = new Image();
-background.src = "acta.jpg";
+background.src = "acta.png";
 
 background.onload = function() {
   canvas.width = background.width;
@@ -118,4 +118,5 @@ acceptBtn.addEventListener("click", () => {
   downloadImage();
 
   acceptBtn.disabled = true;
+
 });

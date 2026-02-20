@@ -3,12 +3,15 @@ const ctx = canvas.getContext("2d");
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 const acceptBtn = document.getElementById("acceptBtn");
-const overlayText = document.getElementById("overlayText");
+
+const actaSection = document.getElementById("actaSection");
+const finalScene = document.getElementById("finalScene");
 
 const petalsCanvas = document.getElementById("petalsCanvas");
 const petalsCtx = petalsCanvas.getContext("2d");
 
 let drawing = false;
+
 let background = new Image();
 background.src = "acta.png";
 
@@ -17,11 +20,6 @@ background.onload = function() {
   canvas.height = background.height;
   ctx.drawImage(background, 0, 0);
 };
-
-function redrawBackground() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(background, 0, 0);
-}
 
 canvas.addEventListener("pointerdown", (e) => {
   drawing = true;
@@ -45,6 +43,15 @@ musicBtn.addEventListener("click", () => {
   music.play();
   musicBtn.style.display = "none";
 });
+
+// -------- DESCARGA --------
+
+function downloadImage() {
+  const link = document.createElement("a");
+  link.download = "Acta_Yulissa_y_Uriel.png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+}
 
 // -------- PÉTALOS --------
 
@@ -94,28 +101,27 @@ function animatePetals() {
   requestAnimationFrame(animatePetals);
 }
 
-function downloadImage() {
-  const link = document.createElement("a");
-  link.download = "Acta_Yulissa_y_Uriel.png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
-}
+// -------- EVENTO ACEPTAR --------
 
 acceptBtn.addEventListener("click", () => {
 
-  petalsActive = true;
-
-  for (let i = 0; i < 100; i++) {
-    petals.push(new Petal());
-  }
-
-  animatePetals();
-
-  overlayText.style.opacity = "1";
-
-  music.play();
-
+  // Descargar acta firmada
   downloadImage();
 
-  acceptBtn.disabled = true;
+  // Ocultar acta y botón
+  actaSection.style.display = "none";
+  acceptBtn.style.display = "none";
+
+  // Mostrar escena final
+  finalScene.style.display = "flex";
+
+  // Activar pétalos
+  petalsActive = true;
+  for (let i = 0; i < 120; i++) {
+    petals.push(new Petal());
+  }
+  animatePetals();
+
+  // Música por si no estaba activa
+  music.play();
 });

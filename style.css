@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  background: #111;
+  font-family: Georgia, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  color: white;
+}
+
+button {
+  margin: 15px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#musicBtn {
+  background: #c9a227;
+  color: black;
+}
+
+#acceptBtn {
+  background: #b22222;
+  color: white;
+  font-size: 20px;
+}
+
+#acceptBtn:hover {
+  transform: scale(1.05);
+}
+
+.canvas-container {
+  position: relative;
+  margin-top: 20px;
+}
+
+canvas {
+  max-width: 95vw;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.2);
+  touch-action: none;
+}
+
+#overlayText {
+  position: fixed;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+#petalsCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}

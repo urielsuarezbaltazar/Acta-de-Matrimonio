@@ -17,6 +17,7 @@ button {
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
+  transition: 0.3s;
 }
 
 #musicBtn {
@@ -46,15 +47,24 @@ canvas {
   touch-action: none;
 }
 
-#overlayText {
-  position: fixed;
-  top: 40%;
-  width: 100%;
+#finalScene {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+#ositosImg {
+  max-width: 90vw;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.3);
+}
+
+#finalText {
+  margin-top: 20px;
+  font-size: 24px;
   text-align: center;
-  font-size: 28px;
-  opacity: 0;
-  transition: opacity 1s ease;
-  pointer-events: none;
 }
 
 #petalsCanvas {
@@ -62,4 +72,9 @@ canvas {
   top: 0;
   left: 0;
   pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

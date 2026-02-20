@@ -118,5 +118,4 @@ acceptBtn.addEventListener("click", () => {
   downloadImage();
 
   acceptBtn.disabled = true;
-
 });
